@@ -53,8 +53,8 @@ void setup(void) {
     proj_matrix = mat4_make_perspective(fov, aspect, znear, zfar);
 
     // Loads the vertex and face values for the mesh data structure
-    load_cube_mesh_data();
-    // load_obj_file_data("./assets/f22.obj");
+    // load_cube_mesh_data();
+    load_obj_file_data("./assets/f22.obj");
 
     // Load the hardcoded texture array in the global mesh texture variable
     mesh_texture = (uint32_t*)REDBRICK_TEXTURE;
