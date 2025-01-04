@@ -1,0 +1,44 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-std=c99",
+      "-o",
+      "renderer-linux",
+      "./src/display.c"
+    ],
+    "directory": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer",
+    "file": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/src/display.c",
+    "output": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-std=c99",
+      "-o",
+      "renderer-linux",
+      "./src/main.c"
+    ],
+    "directory": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer",
+    "file": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/src/main.c",
+    "output": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-std=c99",
+      "-o",
+      "renderer-linux",
+      "./src/vector.c"
+    ],
+    "directory": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer",
+    "file": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/src/vector.c",
+    "output": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/renderer-linux"
+  }
+]
