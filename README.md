@@ -9,18 +9,20 @@ If you're using enum in C and running into multiple definition errors with newer
 Because each file that compiles this line creates its own copy of the variables.
 So to avoid multiple definitions in each .c files, we should not define the variable definition or enum definition in the header file.
 
+```c
 num CullMethod {
     CULL_NONE,
     CULL_BACKFACE,
     CULL_FRONTFACE
 } cull_method;
-
+```
 is not just declaring the enum type, it's also defining a global variable named cull_method.
 So if this is in a header file, it is bad practice because:
 Every .c file that includes this header will create its own copy of cull_method.
 Result: Linker error: "multiple definition of cull_method".
 
 Correct Way (Split Type and Variable)
+```c
 // Define enum type (safe)
 enum CullMethod {
     CULL_NONE,
@@ -30,7 +32,7 @@ enum CullMethod {
 
 // Declare the variable (only a declaration, not a definition)
 extern enum CullMethod cull_method;
-
+```
 ===============================================================================================================================================================================
 MACRO Issue with GNU Systems or when compiling with GCC compiler
 
