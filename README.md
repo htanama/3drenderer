@@ -54,6 +54,11 @@ Correct way in the .c file do this:
 enum CullMethod cull_method;
 ```
 
+✅ What Changed in Newer GCC
+Version	Behavior on Multiple Global Definitions
+Older GCC (pre-9)	Often allowed it silently (undefined behavior)
+GCC 9+ and later	Strictly enforces ODR → linker errors
+
 ===================================================================
 
 MACRO Issue with GNU Systems or when compiling with GCC compiler
