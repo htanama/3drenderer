@@ -34,6 +34,7 @@ enum CullMethod {
 extern enum CullMethod cull_method;
 ```
 ===================================================================
+
 MACRO Issue with GNU Systems or when compiling with GCC compiler
 
 In Linux, the math.h header file is part of the standard C library, specifically provided by glibc (GNU C Library)
