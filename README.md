@@ -4,6 +4,21 @@ Linux Compile Using GCC version 8.5.0 (Released in 2018), the most recent GCC ha
 gcc (GCC) 8.5.0
 Copyright (C) 2018 Free Software Foundation, Inc.
 
+The newer GCC compiler is more restricted when defining multiples variables
+
+The newer versions of GCC (like GCC 10, 11, 12, and up) are stricter and more standards-compliant, especially when using flags like -std=c99, -Wall, or -Werror.
+🔍 Why Newer GCC Is More Restrictive
+🧠 Reason:
+
+Modern GCC adheres more strictly to the C standard (ISO C), which enforces the One Definition Rule (ODR):
+
+    ✅ A global variable can be defined in only one translation unit (i.e., .c file), but can be declared in many.
+
+If you define the same variable in multiple .c files — even if it’s the same name and type — the linker will fail with:
+
+multiple definition of 'my_variable'
+
+
 C linking error caused by defining global variables in multiple .c files.  (This include enum declaration and multiple enum definitions in the new GCC)
 If you're using enum in C and running into multiple definition errors with newer versions of GCC. // BAD: this is a global definition in multiple files
 Because each file that compiles this line creates its own copy of the variables.
