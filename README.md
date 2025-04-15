@@ -21,9 +21,9 @@ So if this is in a header file, it is bad practice because:
 Every .c file that includes this header will create its own copy of cull_method.
 Result: Linker error: "multiple definition of cull_method".
 
-Correct Way (Split Type and Variable)
+Correct Way (Split Type and Variable) - in the .h file do this
 ```c
-// Define enum type (safe)
+// Define enum type (the safe way)
 enum CullMethod {
     CULL_NONE,
     CULL_BACKFACE,
@@ -33,6 +33,12 @@ enum CullMethod {
 // Declare the variable (only a declaration, not a definition)
 extern enum CullMethod cull_method;
 ```
+Correct way in the .c file do this:
+```c
+// Define the variable in the .c file
+enum CullMethod cull_method;
+```
+
 ===================================================================
 
 MACRO Issue with GNU Systems or when compiling with GCC compiler
