@@ -1,3 +1,5 @@
+3drenderer is 3D Computer Graphics Programming from Pikuma, https://pikuma.com/ by Professor Gustavo Pezzi 
+
 Information about Wavefront .obj file - https://en.wikipedia.org/wiki/Wavefront_.obj_file
 
 Linux Compile Using GCC version 8.5.0 (Released in 2018), the most recent GCC has linker error due to multiple definition 
