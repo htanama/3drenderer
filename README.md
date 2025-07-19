@@ -61,7 +61,7 @@ Version	Behavior on Multiple Global Definitions
 Older GCC (pre-9)	Often allowed it silently (undefined behavior)
 GCC 9+ and later	Strictly enforces ODR → linker errors
 
-If you are using GCC 13 and still having issue with the linker please apply the soulution below
+If you are using GCC 13 and still having issue with the linker please apply the solution below
 on the `display.h` file
 
 ```c
