@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -10,7 +12,10 @@
 #include "mesh.h"
 #include "triangle.h"
 #include "texture.h"
+#include <math.h>
 
+CullMethod cull_method = CULL_NONE;
+RenderMethod render_method;
 ///////////////////////////////////////////////////////////////////////////////
 // Array of triangles that should be rendered frame by frame
 ///////////////////////////////////////////////////////////////////////////////

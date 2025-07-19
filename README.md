@@ -61,6 +61,40 @@ Version	Behavior on Multiple Global Definitions
 Older GCC (pre-9)	Often allowed it silently (undefined behavior)
 GCC 9+ and later	Strictly enforces ODR → linker errors
 
+If you are using GCC 13 and still having issue with the linker please apply the soulution below
+on the `display.h` file
+
+```c
+typedef enum cull_method {                                                                                                                                                                                                             
+    CULL_NONE,                                                                                                                                                                                                                         
+    CULL_BACKFACE,                                                                                                                                                                                                                     
+    CULL_FRONTFACE                                                                                                                                                                                                                     
+}CullMethod;                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                       
+// Declare the variable (only a declaration, not a definition)                                                                                                                                                                         
+extern CullMethod cull_method;                                                                                                                                                                                                         
+                                                                                                                                                                                                                                       
+typedef enum render_method {                                                                                                                                                                                                           
+    RENDER_WIRE,                                                                                                                                                                                                                       
+    RENDER_WIRE_VERTEX,                                                                                                                                                                                                                
+    RENDER_FILL_TRIANGLE,                                                                                                                                                                                                              
+    RENDER_FILL_TRIANGLE_WIRE,                                                                                                                                                                                                         
+    RENDER_TEXTURED,                                                                                                                                                                                                                   
+    RENDER_TEXTURED_WIRE                                                                                                                                                                                                               
+}RenderMethod;                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                       
+extern RenderMethod render_method;   
+```
+And on the `main.c` file you can declared both variable before using them: 
+
+```c
+CullMethod cull_method = CULL_NONE;                                                                                                                                                                                                    
+RenderMethod render_method;  
+
+```
+
+
+
 ===================================================================
 
 MACRO Issue with GNU Systems or when compiling with GCC compiler
