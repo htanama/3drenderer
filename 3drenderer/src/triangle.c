@@ -197,7 +197,7 @@ void draw_textured_triangle(
             for (int x = x_start; x <= x_end; x++) {
                 // TODO:
                 // Draw our pixel with the color that come from the texture
-                draw_pixel(x, y, ( x % 2 == 0) ? 0xFFFF00FF : 0xFF000000);
+                draw_pixel(x, y, ( x % 2 == 0 && y % 2 == 0) ? 0xFFFF00FF : 0xFF000000);
                 
             }
         }
@@ -225,7 +225,9 @@ void draw_textured_triangle(
             for (int x = x_start; x <= x_end; x++) {
                 // TODO:
                 // Draw our pixel with the color that come from the texture
-                draw_pixel(x, y, 0xFFFF00FF);
+                draw_pixel(x, y, ( x % 2 == 0 && y % 2 == 0) ? 0xFFFF00FF : 0xFF000000);
+                
+                //draw_pixel(x, y, 0xFFFF00FF);
                 /* x_start += inv_slope_1;
                  x_end += inv_slope_2;*/
             }
