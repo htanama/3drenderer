@@ -4,8 +4,8 @@ SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 uint32_t* color_buffer = NULL;
 SDL_Texture* color_buffer_texture = NULL;
-int window_width = 1920;
-int window_height = 1080;
+int window_width = 800;
+int window_height = 600;
 
 bool initialize_window(void) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -16,8 +16,8 @@ bool initialize_window(void) {
     // Set width and height of the SDL window with the max screen resolution
     SDL_DisplayMode display_mode;
     SDL_GetCurrentDisplayMode(0, &display_mode);
-//    window_width =  display_mode.w;
-//    window_height = display_mode.h;
+    window_width =  display_mode.w;
+    window_height = display_mode.h;
 
     // Create a SDL Window
     window = SDL_CreateWindow(
@@ -26,7 +26,7 @@ bool initialize_window(void) {
         SDL_WINDOWPOS_CENTERED,
         window_width,
         window_height,
-        SDL_WINDOW_RESIZABLE //SDL_WINDOW_BORDERLESS
+        SDL_WINDOW_BORDERLESS
     );
     if (!window) {
         fprintf(stderr, "Error creating SDL window.\n");
@@ -39,8 +39,11 @@ bool initialize_window(void) {
         fprintf(stderr, "Error creating SDL renderer.\n");
         return false;
     }
-
-    return true;
+    
+    // Set to fullscreen exclusive
+    SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+  
+  return true;
 }
 
 void draw_grid(void) {
