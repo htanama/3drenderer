@@ -101,10 +101,10 @@ void draw_line(int x0, int y0, int x1, int y1, uint32_t color) {
     int each_step = 0;
 
     while(each_step <= max_step){
-		draw_pixel(round(drawing_x), round(drawing_y), color);
+      draw_pixel(round(drawing_x), round(drawing_y), color);
 	    drawing_x += dx;
     	drawing_y += dy;
-		each_step++;
+  		each_step++;
     }
 }
 
