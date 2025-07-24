@@ -115,4 +115,4 @@ Without defining it, the compiler hides these constants for strict standard comp
 run this command: 
 gcc -Wall -std=c99 -D_GNU_SOURCE ./src/*.c -lSDL2 -lm -o renderer    
 
-test
+
