@@ -1,4 +1,7 @@
+// for MSVC compiler to disable the warrning that prevent compilation 
+#ifdef _WIN32_
 #pragma warning(disable : 4996)
+#endif
 
 #include <stdio.h>
 #include <string.h>
