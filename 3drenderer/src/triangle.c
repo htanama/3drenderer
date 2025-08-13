@@ -272,9 +272,7 @@ void draw_textured_triangle(
 				// draw_pixel(x, y, ( x % 2 == 0 && y % 2 == 0) ? 0xFFFF00FF : 0xFF000000);
 				// TODO:
                 // Draw our pixel with the color that come from the texture
-               	draw_texel(x, y, texture,
-						   point_a, point_b, point_c, 
-					       u0, v0, u1, v1, u2, v2);    
+               	draw_texel(x, y, texture, point_a, point_b, point_c, u0, v0, u1, v1, u2, v2);    
             }
         }
     }
