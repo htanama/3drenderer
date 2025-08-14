@@ -3,10 +3,7 @@
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 uint32_t* color_buffer = NULL;
-
-// Note: SDL_PIXELFORMAT_ARGB4444
 SDL_Texture* color_buffer_texture = NULL;
-
 int window_width = 800;
 int window_height = 600;
 
@@ -19,7 +16,7 @@ bool initialize_window(void) {
     // Set width and height of the SDL window with the max screen resolution
     SDL_DisplayMode display_mode;
     SDL_GetCurrentDisplayMode(0, &display_mode);
-    window_width =  display_mode.w;
+    window_width = display_mode.w;
     window_height = display_mode.h;
 
     // Create a SDL Window
@@ -42,11 +39,8 @@ bool initialize_window(void) {
         fprintf(stderr, "Error creating SDL renderer.\n");
         return false;
     }
-    
-    // Set to fullscreen exclusive
-    SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
-  
-  return true;
+
+    return true;
 }
 
 void draw_grid(void) {
@@ -63,9 +57,7 @@ void draw_pixel(int x, int y, uint32_t color) {
     }
 }
 
-// DDA Line Algorithm
 void draw_line(int x0, int y0, int x1, int y1, uint32_t color) {
-    /*
     int delta_x = (x1 - x0);
     int delta_y = (y1 - y0);
 
@@ -81,30 +73,6 @@ void draw_line(int x0, int y0, int x1, int y1, uint32_t color) {
         draw_pixel(round(current_x), round(current_y), color);
         current_x += x_inc;
         current_y += y_inc;
-    }
-    */
-
-    float max_step = 0.0f;
-    float dx = (x1 - x0);
-    float dy = (y1 - y0);
-    
-    if(abs(dx) >= abs(dy))
-      max_step = abs(dx);
-    else 
-      max_step = abs(dy);
-
-    dx = dx / max_step;
-    dy = dy / max_step;
-    
-    float drawing_x = x0;
-    float drawing_y = y0;
-    int each_step = 0;
-
-    while(each_step <= max_step){
-      draw_pixel(round(drawing_x), round(drawing_y), color);
-	    drawing_x += dx;
-    	drawing_y += dy;
-  		each_step++;
     }
 }
 
