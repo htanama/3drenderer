@@ -9,7 +9,10 @@ Copyright (C) 2018 Free Software Foundation, Inc.
 The newer GCC compiler is more restricted when defining multiples variables
 
 Recommended Compiler: GCC-8 or GCC-9.
+
 Requirement: GCC command need to be changed in your Makefile to compile correctly.
+
+![Image](https://github.com/user-attachments/assets/efb60c41-8ace-473e-bfab-de769a466cb4)
 
 The newer versions of GCC (like GCC 10, 11, 12, and up) are stricter and more standards-compliant, especially when using flags like -std=c99, -Wall, or -Werror.
 🔍 Why Newer GCC Is More Restrictive
