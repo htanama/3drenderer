@@ -11,7 +11,7 @@
 #include "texture.h"
 #include "mesh.h"
 
-const float M_PI=3.14;
+const float M_PI=3.141592653589793;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Array of triangles that should be rendered frame by frame
@@ -115,9 +115,9 @@ void update(void) {
     triangles_to_render = NULL;
 
     // Change the mesh scale, rotation, and translation values per animation frame
-    mesh.rotation.x += 0.000;
-    mesh.rotation.y += 0.003;
-    mesh.rotation.z += 0.000;
+    //mesh.rotation.x += 0.000;
+    mesh.rotation.y += 0.008;
+    //mesh.rotation.z += 0.000;
     mesh.translation.z = 5.0;
 
     // Create scale, rotation, and translation matrices that will be used to multiply the mesh vertices

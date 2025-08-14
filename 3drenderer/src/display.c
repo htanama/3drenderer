@@ -15,7 +15,7 @@ bool initialize_window(void) {
 
     // Set width and height of the SDL window with the max screen resolution
     SDL_DisplayMode display_mode;
-    SDL_GetCurrentDisplayMode(0, &display_mode);
+    SDL_GetCurrentDisplayMode(1, &display_mode);
     window_width = display_mode.w;
     window_height = display_mode.h;
 
