@@ -8,6 +8,9 @@ Copyright (C) 2018 Free Software Foundation, Inc.
 
 The newer GCC compiler is more restricted when defining multiples variables
 
+Recommended Compiler: GCC-8 or GCC-9.
+Requirement: GCC command need to be changed in your Makefile to compile correctly.
+
 The newer versions of GCC (like GCC 10, 11, 12, and up) are stricter and more standards-compliant, especially when using flags like -std=c99, -Wall, or -Werror.
 🔍 Why Newer GCC Is More Restrictive
 🧠 Reason:
@@ -115,4 +118,5 @@ Without defining it, the compiler hides these constants for strict standard comp
 run this command: 
 gcc -Wall -std=c99 -D_GNU_SOURCE ./src/*.c -lSDL2 -lm -o renderer    
 
-
+Recomended fix for missing M_PI variable is to create constant M_PI variable in the `main.c` file
+const float M_PI=3.141592653589793;
