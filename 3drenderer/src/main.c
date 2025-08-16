@@ -12,7 +12,8 @@
 #include "texture.h"
 #include "mesh.h"
 
-const float M_PI=3.141592653589793238462643383279502884197169399375105820974944592307816406286;
+const float M_PI=3.14159265358979323846;
+
 ///////////////////////////////////////////////////////////////////////////////
 // Array of triangles that should be rendered frame by frame
 ///////////////////////////////////////////////////////////////////////////////
@@ -58,12 +59,16 @@ void setup(void) {
     // load_cube_mesh_data();
     // load_obj_file_data("./assets/cube.obj");
     // load_obj_file_data("./assets/f22.obj");
-    load_obj_file_data("./assets/efa.obj");
+    // load_obj_file_data("./assets/efa.obj");
+	// load_obj_file_data("./assets/crab.obj");
+    load_obj_file_data("./assets/f117.obj");
 	
 	// Load the texture information from an external PNG file
     // load_png_texture_data("./assets/cube.png");
+	load_png_texture_data("./assets/f117.png");
 	// load_png_texture_data("./assets/f22.png");
-	load_png_texture_data("./assets/efa.png");
+	// load_png_texture_data("./assets/efa.png");
+	// load_png_texture_data("./assets/crab.png");
 
 }
 

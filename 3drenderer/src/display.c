@@ -15,7 +15,7 @@ bool initialize_window(void) {
 
     // Set width and height of the SDL window with the max screen resolution
     SDL_DisplayMode display_mode;
-    SDL_GetCurrentDisplayMode(1, &display_mode);
+    SDL_GetCurrentDisplayMode(0, &display_mode);
     window_width = display_mode.w;
     window_height = display_mode.h;
 
@@ -26,7 +26,8 @@ bool initialize_window(void) {
         SDL_WINDOWPOS_CENTERED,
         window_width,
         window_height,
-        SDL_WINDOW_BORDERLESS
+        SDL_WINDOW_BORDERLESS 
+		// SDL_WINDOW_FULLSCREEN
     );
     if (!window) {
         fprintf(stderr, "Error creating SDL window.\n");
@@ -40,6 +41,8 @@ bool initialize_window(void) {
         return false;
     }
 
+	//printf("\nDisplay Resolution %d X %d",window_width, window_height);
+	SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);	
     return true;
 }
 

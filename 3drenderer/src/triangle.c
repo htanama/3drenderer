@@ -5,7 +5,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Draw a filled a triangle with a flat bottom
 ///////////////////////////////////////////////////////////////////////////////
-//
+/*
 //        (x0,y0)
 //          / \
 //         /   \
@@ -13,7 +13,7 @@
 //       /       \
 //      /         \
 //  (x1,y1)------(x2,y2)
-//
+*/
 ///////////////////////////////////////////////////////////////////////////////
 void fill_flat_bottom_triangle(int x0, int y0, int x1, int y1, int x2, int y2, uint32_t color) {
     // Find the two slopes (two triangle legs)
@@ -68,7 +68,7 @@ void fill_flat_top_triangle(int x0, int y0, int x1, int y1, int x2, int y2, uint
 ///////////////////////////////////////////////////////////////////////////////
 //
 //          (x0,y0)
-//            / \
+/*            / \
 //           /   \
 //          /     \
 //         /       \
@@ -83,7 +83,7 @@ void fill_flat_top_triangle(int x0, int y0, int x1, int y1, int x2, int y2, uint
 //                        \_\
 //                           \
 //                         (x2,y2)
-//
+*/
 ///////////////////////////////////////////////////////////////////////////////
 void draw_filled_triangle(int x0, int y0, int x1, int y1, int x2, int y2, uint32_t color) {
     // We need to sort the vertices by y-coordinate ascending (y0 < y1 < y2)
@@ -133,7 +133,7 @@ void draw_triangle(int x0, int y0, int x1, int y1, int x2, int y2, uint32_t colo
 ///////////////////////////////////////////////////////////////////////////////
 //
 //         (B)
-//         /|\
+/*         /|\
 //        / | \
 //       /  |  \
 //      /  (P)  \
@@ -141,7 +141,7 @@ void draw_triangle(int x0, int y0, int x1, int y1, int x2, int y2, uint32_t colo
 //    / /       \ \
 //   //           \\
 //  (A)------------(C)
-//
+*/
 ///////////////////////////////////////////////////////////////////////////////
 vec3_t barycentric_weights(vec2_t a, vec2_t b, vec2_t c, vec2_t p) {
     // Find the vectors between the vertices ABC and point p
@@ -218,7 +218,7 @@ void draw_texel(
 ///////////////////////////////////////////////////////////////////////////////
 //
 //        v0
-//        /\
+/*        /\
 //       /  \
 //      /    \
 //     /      \
@@ -230,7 +230,7 @@ void draw_texel(
 //                 \\
 //                   \
 //                    v2
-//
+*/
 ///////////////////////////////////////////////////////////////////////////////
 void draw_textured_triangle(
     int x0, int y0, float z0, float w0, float u0, float v0,
