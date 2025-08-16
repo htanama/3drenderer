@@ -12,7 +12,7 @@
 #include "texture.h"
 #include "mesh.h"
 
-const M_PI=3.141592653589793238462643383279502884197169399375105820974944592307816406286;
+const float M_PI=3.141592653589793238462643383279502884197169399375105820974944592307816406286;
 ///////////////////////////////////////////////////////////////////////////////
 // Array of triangles that should be rendered frame by frame
 ///////////////////////////////////////////////////////////////////////////////
@@ -56,10 +56,15 @@ void setup(void) {
 
     // Loads the vertex and face values for the mesh data structure
     // load_cube_mesh_data();
-    load_obj_file_data("./assets/cube.obj");
+    // load_obj_file_data("./assets/cube.obj");
+    // load_obj_file_data("./assets/f22.obj");
+    load_obj_file_data("./assets/efa.obj");
+	
+	// Load the texture information from an external PNG file
+    // load_png_texture_data("./assets/cube.png");
+	// load_png_texture_data("./assets/f22.png");
+	load_png_texture_data("./assets/efa.png");
 
-    // Load the texture information from an external PNG file
-    load_png_texture_data("./assets/cube.png");
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -113,8 +118,8 @@ void update(void) {
     triangles_to_render = NULL;
 
     // Change the mesh scale, rotation, and translation values per animation frame
-    mesh.rotation.x += 0.000;
-    mesh.rotation.y += 0.003;
+    mesh.rotation.x += 0.008;
+    mesh.rotation.y += 0.000;
     mesh.rotation.z += 0.000;
     mesh.translation.z = 5.0;
 
