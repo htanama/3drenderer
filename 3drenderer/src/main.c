@@ -36,8 +36,9 @@ void setup(void) {
     render_method = RENDER_FILL_TRIANGLE;
     cull_method = CULL_BACKFACE;
 
-    // Allocate the required memory in bytes to hold the color buffer
+    // Allocate the required memory in bytes to hold the color buffer and the z_buffer
     color_buffer = (uint32_t*)malloc(sizeof(uint32_t) * window_width * window_height);
+	z_buffer =(float*)malloc(sizeof(float) * window_width * window_height);
 
     // Creating a SDL texture that is used to display the color buffer
     color_buffer_texture = SDL_CreateTexture(
@@ -60,20 +61,22 @@ void setup(void) {
     // load_obj_file_data("./assets/cube.obj");
     // load_obj_file_data("./assets/f22.obj");
     // load_obj_file_data("./assets/efa.obj");
-	// load_obj_file_data("./assets/crab.obj");
-    load_obj_file_data("./assets/f117.obj");
+	load_obj_file_data("./assets/crab.obj");
+    // load_obj_file_data("./assets/f117.obj");
+	// load_obj_file_data("./assets/sphere.obj");
 	
-	// Load the texture information from an external PNG file
-    // load_png_texture_data("./assets/cube.png");
-	load_png_texture_data("./assets/f117.png");
-	// load_png_texture_data("./assets/f22.png");
-	// load_png_texture_data("./assets/efa.png");
-	// load_png_texture_data("./assets/crab.png");
 
+	// Load the texture information from an external PNG file
+  	// load_png_texture_data("./assets/cube.png");
+	// load_png_texture_data("./assets/f117.png");
+	load_png_texture_data("./assets/crab.png");
+    // load_png_texture_data("./assets/f22.png");
+	// load_png_texture_data("./assets/efa.png");
+	// load_png_texture_data("./assets/earth.png");
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// Poll system events and handle keyboard input
+// Poll sysmem events and handle keyboard input
 ///////////////////////////////////////////////////////////////////////////////
 void process_input(void) {
     SDL_Event event;
@@ -123,8 +126,8 @@ void update(void) {
     triangles_to_render = NULL;
 
     // Change the mesh scale, rotation, and translation values per animation frame
-    mesh.rotation.x += 0.008;
-    mesh.rotation.y += 0.000;
+    mesh.rotation.x += 0.000;
+    mesh.rotation.y += 0.009;
     mesh.rotation.z += 0.000;
     mesh.translation.z = 5.0;
 
@@ -315,6 +318,7 @@ void render(void) {
     render_color_buffer();
 
     clear_color_buffer(0xFF000000);
+	clear_z_buffer();
 
     SDL_RenderPresent(renderer);
 }
@@ -324,7 +328,8 @@ void render(void) {
 ///////////////////////////////////////////////////////////////////////////////
 void free_resources(void) {
     free(color_buffer);
-    array_free(mesh.faces);
+    free(z_buffer);
+	array_free(mesh.faces);
     array_free(mesh.vertices);
 }
 
