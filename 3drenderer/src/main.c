@@ -17,15 +17,21 @@ const float M_PI=3.14159265358979323846;
 ///////////////////////////////////////////////////////////////////////////////
 // Array of triangles that should be rendered frame by frame
 ///////////////////////////////////////////////////////////////////////////////
-triangle_t* triangles_to_render = NULL;
+#define MAX_TRIANGLES 10000
+triangle_t triangles_to_render[MAX_TRIANGLES];
+int num_triangles_to_render = 0;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Global variables for execution status and game loop
 ///////////////////////////////////////////////////////////////////////////////
 bool is_running = false;
 int previous_frame_time = 0;
-
 vec3_t camera_position = { 0, 0, 0 };
+
+//////////////////////////////////////////////////////////////////////////////
+// Declaration of our global transformation matrices
+/////////////////////////////////////////////////////////////////////////////
+mat4_t world_matrix; 
 mat4_t proj_matrix;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -60,8 +66,8 @@ void setup(void) {
     // load_cube_mesh_data();
     // load_obj_file_data("./assets/cube.obj");
     // load_obj_file_data("./assets/f22.obj");
-    // load_obj_file_data("./assets/efa.obj");
-	load_obj_file_data("./assets/crab.obj");
+    load_obj_file_data("./assets/efa.obj");
+	// load_obj_file_data("./assets/crab.obj");
     // load_obj_file_data("./assets/f117.obj");
 	// load_obj_file_data("./assets/sphere.obj");
 	
@@ -69,9 +75,9 @@ void setup(void) {
 	// Load the texture information from an external PNG file
   	// load_png_texture_data("./assets/cube.png");
 	// load_png_texture_data("./assets/f117.png");
-	load_png_texture_data("./assets/crab.png");
+	// load_png_texture_data("./assets/crab.png");
     // load_png_texture_data("./assets/f22.png");
-	// load_png_texture_data("./assets/efa.png");
+	load_png_texture_data("./assets/efa.png");
 	// load_png_texture_data("./assets/earth.png");
 }
 
@@ -122,14 +128,16 @@ void update(void) {
 
     previous_frame_time = SDL_GetTicks();
 
-    // Initialize the array of triangles to render
-    triangles_to_render = NULL;
+    // Initialize the array of triangles to render  triangles_to_render = NULL; // not needed anymore we are using z-buffer
+    
+    // Initialize the counter of triangles to render for the current frame
+    num_triangles_to_render = 0; 
 
     // Change the mesh scale, rotation, and translation values per animation frame
-    mesh.rotation.x += 0.000;
-    mesh.rotation.y += 0.009;
+    mesh.rotation.x += 0.006;
+    mesh.rotation.y += 0.000;
     mesh.rotation.z += 0.000;
-    mesh.translation.z = 5.0;
+    mesh.translation.z = 4.0;
 
     // Create scale, rotation, and translation matrices that will be used to multiply the mesh vertices
     mat4_t scale_matrix = mat4_make_scale(mesh.scale.x, mesh.scale.y, mesh.scale.z);
@@ -155,7 +163,7 @@ void update(void) {
             vec4_t transformed_vertex = vec4_from_vec3(face_vertices[j]);
 
             // Create a World Matrix combining scale, rotation, and translation matrices
-            mat4_t world_matrix = mat4_identity();
+            world_matrix = mat4_identity();
 
             // Order matters: First scale, then rotate, then translate. [T]*[R]*[S]*v
             world_matrix = mat4_mul_mat4(scale_matrix, world_matrix);
@@ -220,7 +228,8 @@ void update(void) {
         }
 
         // Calculate the average depth for each face based on the vertices after transformation
-        float avg_depth = (transformed_vertices[0].z + transformed_vertices[1].z + transformed_vertices[2].z) / 3.0;
+        // we do not need to use this avg_depth since we are using z-buffer - for depth buffer
+        // float avg_depth = (transformed_vertices[0].z + transformed_vertices[1].z + transformed_vertices[2].z) / 3.0;
 
         // Calculate the shade intensity based on how aliged is the normal with the flipped light direction ray
         float light_intensity_factor = -vec3_dot(normal, light.direction);
@@ -240,25 +249,30 @@ void update(void) {
                 { mesh_face.c_uv.u, mesh_face.c_uv.v }
             },
             .color = triangle_color,
-            .avg_depth = avg_depth
+            // .avg_depth = avg_depth // we do not need to use this avg_depth since we are using z-buffer - for depth buffer
         };
 
         // Save the projected triangle in the array of triangles to render
-        array_push(triangles_to_render, projected_triangle);
+        //array_push(triangles_to_render, projected_triangle); // we are not using this since we are using z-buffer
+        if (num_triangles_to_render < MAX_TRIANGLES){
+            triangles_to_render[num_triangles_to_render++] = projected_triangle;
+        }
+    
     }
 
     // Sort the triangles to render by their avg_depth
-    int num_triangles = array_length(triangles_to_render);
-    for (int i = 0; i < num_triangles; i++) {
-        for (int j = i; j < num_triangles; j++) {
-            if (triangles_to_render[i].avg_depth < triangles_to_render[j].avg_depth) {
-                // Swap the triangles positions in the array
-                triangle_t temp = triangles_to_render[i];
-                triangles_to_render[i] = triangles_to_render[j];
-                triangles_to_render[j] = temp;
-            }
-        }
-    }
+    //int num_triangles = array_length(triangles_to_render);
+    //for (int i = 0; i < num_triangles; i++) {
+    //    for (int j = i; j < num_triangles; j++) {
+    //        if (triangles_to_render[i].avg_depth < triangles_to_render[j].avg_depth) {
+    //            // Swap the triangles positions in the array
+    //            triangle_t temp = triangles_to_render[i];
+    //            triangles_to_render[i] = triangles_to_render[j];
+    //            triangles_to_render[j] = temp;
+    //        }
+    //    }
+    //}
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -269,17 +283,17 @@ void render(void) {
 
     draw_grid();
 
-    // Loop all projected triangles and render them
-    int num_triangles = array_length(triangles_to_render);
-    for (int i = 0; i < num_triangles; i++) {
+    // int num_triangles = array_length(triangles_to_render); not using this because using z-buffer
+    // Loop all projected triangles and render them 
+    for (int i = 0; i < num_triangles_to_render; i++) {
         triangle_t triangle = triangles_to_render[i];
 
         // Draw filled triangle
         if (render_method == RENDER_FILL_TRIANGLE || render_method == RENDER_FILL_TRIANGLE_WIRE) {
             draw_filled_triangle(
-                triangle.points[0].x, triangle.points[0].y, // vertex A
-                triangle.points[1].x, triangle.points[1].y, // vertex B
-                triangle.points[2].x, triangle.points[2].y, // vertex C
+                triangle.points[0].x, triangle.points[0].y, triangle.points[0].z, triangle.points[0].w,// vertex A
+                triangle.points[1].x, triangle.points[1].y, triangle.points[1].z, triangle.points[0].w,// vertex B
+                triangle.points[2].x, triangle.points[2].y, triangle.points[2].z, triangle.points[0].w,// vertex C
                 triangle.color
             );
         }
@@ -313,10 +327,12 @@ void render(void) {
     }
 
     // Clear the array of triangles to render every frame loop
-    array_free(triangles_to_render);
+    // array_free(triangles_to_render); // we do not need this since we are using z-buffer
 
+    // Finally draw the color buffer to the SDL window
     render_color_buffer();
 
+    // Clear all the array to get ready for the next frame
     clear_color_buffer(0xFF000000);
 	clear_z_buffer();
 
