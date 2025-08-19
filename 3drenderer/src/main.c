@@ -29,6 +29,7 @@ int num_triangles_to_render = 0;
 bool is_running = false;
 int previous_frame_time = 0;
 // vec3_t camera_position = { 0, 0, 0 }; // we do not need this any more since we have camera.h
+float delta_time = 0; 
 
 //////////////////////////////////////////////////////////////////////////////
 // Declaration of our global transformation matrices
@@ -131,6 +132,9 @@ void update(void) {
         SDL_Delay(time_to_wait);
     }
 
+    // Get a delta time factor converted to seconds to be used to update our game objects
+    delta_time = (SDL_GetTicks() - previous_frame_time) / 1000.0;
+
     previous_frame_time = SDL_GetTicks();
 
     // Initialize the array of triangles to render  triangles_to_render = NULL; // not needed anymore we are using z-buffer
@@ -138,7 +142,7 @@ void update(void) {
     // Initialize the counter of triangles to render for the current frame
     num_triangles_to_render = 0; 
 
-    // Change the mesh scale, rotation, and translation values per animation frame
+     // Change the mesh scale, rotation, and translation values per animation frame
     mesh.rotation.x += 0.000;
     mesh.rotation.y += 0.000;
     mesh.rotation.z += 0.000;
@@ -148,7 +152,7 @@ void update(void) {
     camera.position.x += 0.008;
     camera.position.y += 0.008;
 
-    // Create the view matrix looking at a hardcoded target point
+ 	// Create the view matrix looking at a hardcoded target point
     vec3_t target = { 0, 0, 4.0 };
     vec3_t up_direction = { 0, 1, 0 };
     view_matrix = mat4_look_at(camera.position, target, up_direction);
