@@ -66,19 +66,22 @@ void setup(void) {
     // load_cube_mesh_data();
     // load_obj_file_data("./assets/cube.obj");
     // load_obj_file_data("./assets/f22.obj");
-    load_obj_file_data("./assets/efa.obj");
+    // load_obj_file_data("./assets/efa.obj");
 	// load_obj_file_data("./assets/crab.obj");
     // load_obj_file_data("./assets/f117.obj");
 	// load_obj_file_data("./assets/sphere.obj");
-	
+	load_obj_file_data("./assets/drone.obj");
+
 
 	// Load the texture information from an external PNG file
   	// load_png_texture_data("./assets/cube.png");
 	// load_png_texture_data("./assets/f117.png");
 	// load_png_texture_data("./assets/crab.png");
     // load_png_texture_data("./assets/f22.png");
-	load_png_texture_data("./assets/efa.png");
+	// load_png_texture_data("./assets/efa.png");
 	// load_png_texture_data("./assets/earth.png");
+    load_png_texture_data("./assets/drone.png");
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -134,8 +137,8 @@ void update(void) {
     num_triangles_to_render = 0; 
 
     // Change the mesh scale, rotation, and translation values per animation frame
-    mesh.rotation.x += 0.006;
-    mesh.rotation.y += 0.000;
+    mesh.rotation.x += 0.000;
+    mesh.rotation.y += 0.006;
     mesh.rotation.z += 0.000;
     mesh.translation.z = 4.0;
 
