@@ -13,28 +13,29 @@ mesh_t mesh = {
 
 // Original vertices - When the cube is shifted by a vector of (−1,−1,−1), 
 // its center moves from (0.5,0.5,0.5) to (−0.5,−0.5,−0.5).
-//vec3_t cube_vertices[N_CUBE_VERTICES] = {
-//    { .x = -1, .y = -1, .z = -1 }, // 1
-//    { .x = -1, .y =  1, .z = -1 }, // 2
-//    { .x =  1, .y =  1, .z = -1 }, // 3
-//    { .x =  1, .y = -1, .z = -1 }, // 4
-//    { .x =  1, .y =  1, .z =  1 }, // 5
-//    { .x =  1, .y = -1, .z =  1 }, // 6
-//    { .x = -1, .y =  1, .z =  1 }, // 7
-//    { .x = -1, .y = -1, .z =  1 }  // 8
-//};
+vec3_t cube_vertices[N_CUBE_VERTICES] = {
+    { .x = -1, .y = -1, .z = -1 }, // 1
+    { .x = -1, .y =  1, .z = -1 }, // 2
+    { .x =  1, .y =  1, .z = -1 }, // 3
+    { .x =  1, .y = -1, .z = -1 }, // 4
+    { .x =  1, .y =  1, .z =  1 }, // 5
+    { .x =  1, .y = -1, .z =  1 }, // 6
+    { .x = -1, .y =  1, .z =  1 }, // 7
+    { .x = -1, .y = -1, .z =  1 }  // 8
+};
 
 // The center of a standard unit cube with one vertex at the origin (0,0,0) is at (0.5,0.5,0.5).
-vec3_t cube_vertices[N_CUBE_VERTICES] = {
-    { .x = 0, .y = 0, .z = 0 }, // 1
-    { .x = 1, .y = 0, .z = 0 }, // 2
-    { .x = 0, .y = 1, .z = 0 }, // 3
-    { .x = 0, .y = 0, .z = 1 }, // 4
-    { .x = 1, .y = 1, .z = 0 }, // 5
-    { .x = 1, .y = 0, .z = 1 }, // 6
-    { .x = 0, .y = 1, .z = 1 }, // 7
-    { .x = 1, .y = 1, .z = 1 }  // 8
-};
+//vec3_t cube_vertices[N_CUBE_VERTICES] = {
+//    { .x = 0, .y = 0, .z = 0 }, // 1
+//    { .x = 1, .y = 0, .z = 0 }, // 2
+//    { .x = 0, .y = 1, .z = 0 }, // 3
+//    { .x = 0, .y = 0, .z = 1 }, // 4
+//    { .x = 1, .y = 1, .z = 0 }, // 5
+//    { .x = 1, .y = 0, .z = 1 }, // 6
+//    { .x = 0, .y = 1, .z = 1 }, // 7
+//    { .x = 1, .y = 1, .z = 1 }  // 8
+//};
+
 
 face_t cube_faces[N_CUBE_FACES] = {
     // front
