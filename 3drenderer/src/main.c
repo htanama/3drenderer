@@ -70,19 +70,19 @@ void setup(void) {
     // load_obj_file_data("./assets/cube.obj");
     // load_obj_file_data("./assets/f22.obj");
     load_obj_file_data("./assets/efa.obj");
-	// load_obj_file_data("./assets/crab.obj");
+    // load_obj_file_data("./assets/crab.obj");
     // load_obj_file_data("./assets/f117.obj");
-	// load_obj_file_data("./assets/sphere.obj");
-	// load_obj_file_data("./assets/drone.obj");
+    // load_obj_file_data("./assets/sphere.obj");
+    // load_obj_file_data("./assets/drone.obj");
 
 
-	// Load the texture information from an external PNG file
+    // Load the texture information from an external PNG file
     // load_png_texture_data("./assets/cube.png");
-	// load_png_texture_data("./assets/f117.png");
-	// load_png_texture_data("./assets/crab.png");
+    // load_png_texture_data("./assets/f117.png");
+    // load_png_texture_data("./assets/crab.png");
     // load_png_texture_data("./assets/f22.png");
-	load_png_texture_data("./assets/efa.png");
-	// load_png_texture_data("./assets/earth.png");
+    load_png_texture_data("./assets/efa.png");
+    // load_png_texture_data("./assets/earth.png");
     // load_png_texture_data("./assets/drone.png");
 
 }
@@ -114,9 +114,25 @@ void process_input(void) {
                 render_method = RENDER_TEXTURED_WIRE;
             if (event.key.keysym.sym == SDLK_c)
                 cull_method = CULL_BACKFACE;
-            if (event.key.keysym.sym == SDLK_d)
+            if (event.key.keysym.sym == SDLK_x)
                 cull_method = CULL_NONE;
-            break;
+	    if (event.key.keysym.sym == SDLK_UP)
+	        camera.position.y += 3.0 * delta_time;
+	    if (event.key.keysym.sym == SDLK_DOWN)
+	        camera.position.y -= 3.0 * delta_time;
+	    if (event.key.keysym.sym == SDLK_a)
+	       camera.yaw += 5.0 * delta_time;
+	    if (event.key.keysym.sym == SDLK_d)
+               camera.yaw -= 5.0 * delta_time;
+	    if (event.key.keysym.sym == SDLK_w){
+	      camera.forward_velocity = vec3_mul(camera.direction, 5.0 * delta_time);
+	      camera.position = vec3_add(camera.position, camera.forward_velocity);
+	    }
+	    if (event.key.keysym.sym == SDLK_s){
+	      camera.forward_velocity = vec3_mul(camera.direction, 5.0 * delta_time);
+	      camera.position = vec3_sub(camera.position, camera.forward_velocity);
+	    }
+	    break;
     }
 }
 
@@ -143,18 +159,21 @@ void update(void) {
     num_triangles_to_render = 0; 
 
      // Change the mesh scale, rotation, and translation values per animation frame
-    mesh.rotation.x += 0.000;
-    mesh.rotation.y += 0.000;
-    mesh.rotation.z += 0.000;
-    mesh.translation.z = 4.0;
+    mesh.rotation.x += 0.000 * delta_time;
+    mesh.rotation.y += 0.000 * delta_time;
+    mesh.rotation.z += 0.000 * delta_time;
+    mesh.translation.z = 5.0; 
 
-    // Change the camera position per animation frame
-    camera.position.x += 0.008;
-    camera.position.y += 0.008;
+    // initialize the target in z-axis, looking at the positive z-axis
+    vec3_t target = { 0, 0, 1 }; 
+    mat4_t camera_yaw_rotation = mat4_make_rotation_y(camera.yaw);
+    camera.direction = vec3_from_vec4(mat4_mul_vec4(camera_yaw_rotation, vec4_from_vec3(target)));
 
- 	// Create the view matrix looking at a hardcoded target point
-    vec3_t target = { 0, 0, 4.0 };
+    // offset the camera position in the direction where the camera is pointing at
+    target = vec3_add(camera.position, camera.direction);
     vec3_t up_direction = { 0, 1, 0 };
+
+    // Create the view matrix 
     view_matrix = mat4_look_at(camera.position, target, up_direction);
 
 
