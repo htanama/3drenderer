@@ -1,0 +1,23 @@
+# ==============================================================================
+# Simple Makefile with GCC and Clang Build Targets
+# ==============================================================================
+
+# Executable name
+TARGET = Renderer
+
+# Source files
+SRCS = ./src/*.c
+
+# Get SDL2 flags for compilation and linking
+SDL_CFLAGS = $(shell sdl2-config --cflags)
+SDL_LDFLAGS = $(shell sdl2-config --libs)u
+
+# ==============================================================================
+# Utility Commands
+# ==============================================================================
+
+# Clean the project
+.PHONY: clean
+clean:
+	@echo "Cleaning project files..."
+	@rm -f $(TARGET)

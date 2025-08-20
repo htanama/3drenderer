@@ -12,8 +12,9 @@
 #include "triangle.h"
 #include "texture.h"
 #include "mesh.h"
+#include <math.h>
 
-const float M_PI=3.14159265358979323846;
+//const float M_PI=3.14159265358979323846;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Array of triangles that should be rendered frame by frame
@@ -174,8 +175,7 @@ void update(void) {
     vec3_t up_direction = { 0, 1, 0 };
 
     // Create the view matrix 
-    view_matrix = mat4_look_at(camera.position, target, up_direction);
-
+    view_matrix = mat4_look_at(camera.position, target, up_direction);   
 
     // Create scale, rotation, and translation matrices that will be used to multiply the mesh vertices
     mat4_t scale_matrix = mat4_make_scale(mesh.scale.x, mesh.scale.y, mesh.scale.z);

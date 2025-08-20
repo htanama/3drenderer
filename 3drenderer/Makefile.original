@@ -3,9 +3,9 @@
 
 # GCC-9.3.0 located in my local directory below, please make changes to this Makefile to find your GCC compiler.
 CC = /home/harry/local/gcc/bin/gcc
-
+#CC = /usr/bin/clang
 build: 
-	$(CC) -Wall -g ./src/*.c -L/home/harry/local/gcc/lib64 -lSDL2 -o ./renderer-linux -lm
+	$(CC) -Wall -g -std=c99 ./src/*.c -L/home/harry/local/gcc/lib64 -lm -lSDL2 -o ./renderer-linux
 
 run:
 	./renderer-linux
