@@ -1,44 +1,184 @@
 [
   {
     "arguments": [
-      "/usr/bin/gcc",
+      "/home/harry/local/gcc/bin/gcc",
       "-c",
       "-Wall",
-      "-std=c99",
+      "-g",
       "-o",
-      "renderer-linux",
+      "./renderer-linux",
+      "./src/array.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/array.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
+      "./src/camera.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/camera.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
+      "./src/clipping.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/clipping.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
       "./src/display.c"
     ],
-    "directory": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer",
-    "file": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/src/display.c",
-    "output": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/renderer-linux"
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/display.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
   },
   {
     "arguments": [
-      "/usr/bin/gcc",
+      "/home/harry/local/gcc/bin/gcc",
       "-c",
       "-Wall",
-      "-std=c99",
+      "-g",
       "-o",
-      "renderer-linux",
+      "./renderer-linux",
+      "./src/light.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/light.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
       "./src/main.c"
     ],
-    "directory": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer",
-    "file": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/src/main.c",
-    "output": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/renderer-linux"
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/main.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
   },
   {
     "arguments": [
-      "/usr/bin/gcc",
+      "/home/harry/local/gcc/bin/gcc",
       "-c",
       "-Wall",
-      "-std=c99",
+      "-g",
       "-o",
-      "renderer-linux",
+      "./renderer-linux",
+      "./src/matrix.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/matrix.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
+      "./src/mesh.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/mesh.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
+      "./src/swap.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/swap.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
+      "./src/texture.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/texture.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
+      "./src/triangle.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/triangle.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
+      "./src/upng.c"
+    ],
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/upng.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
+  },
+  {
+    "arguments": [
+      "/home/harry/local/gcc/bin/gcc",
+      "-c",
+      "-Wall",
+      "-g",
+      "-o",
+      "./renderer-linux",
       "./src/vector.c"
     ],
-    "directory": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer",
-    "file": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/src/vector.c",
-    "output": "/home/harry/Development/SDL-GameC_C++/3drenderer/3drenderer/renderer-linux"
+    "directory": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer",
+    "file": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/src/vector.c",
+    "output": "/home/harry/Linux-Dev-Projects/SDL2-C-C++Projects/3drenderer/3drenderer/renderer-linux"
   }
 ]

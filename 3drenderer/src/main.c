@@ -5,6 +5,7 @@
 #include "upng.h"
 #include "array.h"
 #include "display.h"
+#include "clipping.h"
 #include "vector.h"
 #include "matrix.h"
 #include "light.h"
@@ -60,29 +61,32 @@ void setup(void) {
     );
 
     // Initialize the perspective projection matrix
-    float fov = M_PI / 3.0; // the same as 180/3, or 60deg
+    float fov = 3.141592 / 3.0; // the same as 180/3, or 60deg
     float aspect = (float)window_height / (float)window_width;
-    float znear = 0.1;
-    float zfar = 100.0;
-    proj_matrix = mat4_make_perspective(fov, aspect, znear, zfar);
+    float z_near = 1.0;
+    float z_far = 20.0;
+    
+    proj_matrix = mat4_make_perspective(fov, aspect, z_near, z_far);
 
+    init_frustum_planes(fov, z_near, z_far);
+    
     // Loads the vertex and face values for the mesh data structure
     // load_cube_mesh_data();
-    // load_obj_file_data("./assets/cube.obj");
+    load_obj_file_data("./assets/cube.obj");
     // load_obj_file_data("./assets/f22.obj");
-    load_obj_file_data("./assets/efa.obj");
+    // load_obj_file_data("./assets/efa.obj");
     // load_obj_file_data("./assets/crab.obj");
     // load_obj_file_data("./assets/f117.obj");
     // load_obj_file_data("./assets/sphere.obj");
     // load_obj_file_data("./assets/drone.obj");
-
-
+    
+    
     // Load the texture information from an external PNG file
-    // load_png_texture_data("./assets/cube.png");
+    load_png_texture_data("./assets/cube.png");
     // load_png_texture_data("./assets/f117.png");
     // load_png_texture_data("./assets/crab.png");
     // load_png_texture_data("./assets/f22.png");
-    load_png_texture_data("./assets/efa.png");
+    //load_png_texture_data("./assets/efa.png");
     // load_png_texture_data("./assets/earth.png");
     // load_png_texture_data("./assets/drone.png");
 
@@ -133,7 +137,7 @@ void process_input(void) {
 	      camera.forward_velocity = vec3_mul(camera.direction, 5.0 * delta_time);
 	      camera.position = vec3_sub(camera.position, camera.forward_velocity);
 	    }
-	    break;
+	    break;	    	    
     }
 }
 
@@ -187,6 +191,8 @@ void update(void) {
     // Loop all triangle faces of our mesh
     int num_faces = array_length(mesh.faces);
     for (int i = 0; i < num_faces; i++) {
+      if( i != 4 ) continue;
+            
         face_t mesh_face = mesh.faces[i];
 
         vec3_t face_vertices[3];

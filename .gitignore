@@ -5,6 +5,7 @@
 
 #ignore the Ctags file
 tags
+TAGS
 
 # User-specific files
 *.rsuser

@@ -5,7 +5,7 @@
 CC = /home/harry/local/gcc/bin/gcc
 
 build: 
-	$(CC) -Wall -g ./src/*.c -L/home/harry/local/gcc/lib64 -lSDL2 -o ./renderer-linux -lm
+	bear -- $(CC) -Wall -g ./src/*.c -L/home/harry/local/gcc/lib64 -lSDL2 -o ./renderer-linux -lm
 
 run:
 	./renderer-linux
